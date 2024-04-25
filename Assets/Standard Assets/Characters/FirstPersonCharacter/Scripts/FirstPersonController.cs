@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
 using Random = UnityEngine.Random;
+using TMPro;
 
 namespace UnityStandardAssets.Characters.FirstPerson
 {
@@ -42,7 +43,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool m_Jumping;
         private AudioSource m_AudioSource;
 
+        // Rollaball collectible score stuff
         private int count;
+        public TextMeshProUGUI countText;
 
         // Use this for initialization
         private void Start()
@@ -58,7 +61,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
 
+            // Score stuff
             count = 0;
+            SetCountText();
         }
 
 
@@ -143,7 +148,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 other.gameObject.SetActive(false);
                 count = count + 1;
+                SetCountText();
             }
+        }
+
+        void SetCountText()
+        {
+            countText.text =  "Score: " + count.ToString();
         }
 
         private void PlayJumpSound()
