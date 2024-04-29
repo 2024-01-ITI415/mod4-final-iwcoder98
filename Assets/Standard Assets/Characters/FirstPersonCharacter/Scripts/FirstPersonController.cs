@@ -46,6 +46,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         // Rollaball collectible score stuff
         private int count;
         public TextMeshProUGUI countText;
+        public AudioClip audioClip;
+        public AudioSource audioSrc;
 
         // Use this for initialization
         private void Start()
@@ -149,7 +151,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 other.gameObject.SetActive(false);
                 count = count + 1;
                 SetCountText();
+                playSound();
             }
+        }
+
+        public void playSound()
+        {
+            audioSrc.PlayOneShot(audioClip);
         }
 
         void SetCountText()
