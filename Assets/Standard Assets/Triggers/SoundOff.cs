@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoundTrigger : MonoBehaviour
+public class SoundOff : MonoBehaviour
 {
     public AudioSource audioSrc;
 
@@ -10,10 +10,7 @@ public class SoundTrigger : MonoBehaviour
 		// when the trigger is hit by something
 		// check to see if it's a Projectile 
 		if (other.gameObject.tag == "Player") {
-			if (!audioSrc.isPlaying)
-			{
-				audioSrc.Play();
-			}
+			audioSrc.Stop();
 		}
 	}
 }
