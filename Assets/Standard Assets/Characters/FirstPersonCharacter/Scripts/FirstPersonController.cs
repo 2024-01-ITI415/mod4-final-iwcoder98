@@ -46,6 +46,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         // Rollaball collectible score stuff
         private int count;
         public TextMeshProUGUI countText;
+        public TextMeshProUGUI endText;
         public AudioClip audioClip;
         public AudioSource audioSrc;
 
@@ -66,6 +67,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             // Score stuff
             count = 0;
             SetCountText();
+            endText.text = "";
         }
 
 
@@ -153,6 +155,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 SetCountText();
                 playSound();
             }
+            if (other.gameObject.CompareTag("EndBox"))
+            {
+                ShowEndText();
+            }
         }
 
         public void playSound()
@@ -163,6 +169,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
         void SetCountText()
         {
             countText.text =  "Score: " + count.ToString();
+        }
+        void ShowEndText()
+        {
+            endText.text =  "Good job! Your score: " + count.ToString() + " / 16";
+            countText.text = "";
         }
 
         private void PlayJumpSound()

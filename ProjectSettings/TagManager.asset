@@ -7,6 +7,7 @@ TagManager:
   - Fire
   - Loader
   - PickUp
+  - EndBox
   layers:
   - Default
   - TransparentFX
